@@ -1,0 +1,70 @@
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Recorder.Recorder"
+            Title="Recorder"
+            SelectedTabColor="#869c7e"
+            UnselectedTabColor="Gray">
+    <ContentPage Title="Record">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Padding="30"
+                Text="Audiorekorder"
+                Style="{StaticResource Headline}"
+                HorizontalOptions="Center" />
+
+            <Image
+                Grid.Row="1"
+                x:Name="ImageMicrophone"
+                Source="mic_off.svg"
+                HeightRequest="130"
+                SemanticProperties.Description="microphone image" />
+
+            <Button
+                Grid.Row="2"
+                WidthRequest="300"
+                x:Name="ButtonRecord"
+                Text="Start recording"
+                Clicked="OnRecordClicked"
+                HorizontalOptions="Fill"
+                VerticalOptions="End"
+                Margin="0,0,0,50" />
+        </Grid>
+    </ContentPage>
+
+    <ContentPage Title="Play">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Padding="30"
+                Text="Aufnahmen"
+                Style="{StaticResource Headline}"
+                HorizontalOptions="Center" />
+
+            <CollectionView
+                Grid.Row="1"
+                x:Name="AudioListView"
+                ItemsSource="{Binding RecordedFiles}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Filename}" />
+                            <Button Text="Play" Clicked="OnPlayClicked" CommandParameter="{Binding FilePath}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage>
+</TabbedPage>
