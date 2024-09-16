@@ -24,11 +24,7 @@ namespace Recorder
 
         private async void OnRecordClicked(object sender, EventArgs e)
         {
-            if (await Permissions.RequestAsync<Permissions.Microphone>() != PermissionStatus.Granted)
-            {
-                await DisplayAlert("Permission Denied", "Microphone permission is required to record audio.", "OK");
-                return;
-            }
+            await Permissions.RequestAsync<Permissions.Microphone>();
 
             if (_audioRecorder.IsRecording)
             {
@@ -69,11 +65,7 @@ namespace Recorder
 
         private async void OnPlayClicked(object sender, EventArgs e)
         {
-            if (await Permissions.RequestAsync<Permissions.StorageRead>() != PermissionStatus.Granted)
-            {
-                await DisplayAlert("Permission Denied", "Storage permission is required to play audio files.", "OK");
-                return;
-            }
+            await Permissions.RequestAsync<Permissions.StorageRead>();
 
             var button = sender as Button;
             var filePath = button?.CommandParameter as string;
@@ -82,10 +74,6 @@ namespace Recorder
             {
                 var player = AudioManager.Current.CreatePlayer(File.OpenRead(filePath));
                 player.Play();
-            }
-            else
-            {
-                await DisplayAlert("Error", "File not found", "OK");
             }
         }
 
@@ -107,6 +95,11 @@ namespace Recorder
                         FilePath = file
                     });
                 }
+            }
+            else
+            {
+                // Optionally, show an alert or log if the directory doesn't exist
+                Console.WriteLine($"Directory not found: {musicPath}");
             }
         }
 
