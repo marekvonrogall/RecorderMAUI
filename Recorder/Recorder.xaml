@@ -53,9 +53,9 @@
                 HorizontalOptions="Center" />
 
             <CollectionView
-                Grid.Row="1"
-                x:Name="AudioListView"
-                ItemsSource="{Binding RecordedFiles}">
+    Grid.Row="1"
+    x:Name="AudioListView"
+    ItemsSource="{Binding RecordedFiles}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="10">
@@ -65,6 +65,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
         </Grid>
     </ContentPage>
 </TabbedPage>

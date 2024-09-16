@@ -8,8 +8,8 @@
     Title="Recorder">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Record"
+        ContentTemplate="{DataTemplate local:Recorder}"
+        Route="Recorder" />
 
 </Shell>
