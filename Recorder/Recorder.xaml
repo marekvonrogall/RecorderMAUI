@@ -22,16 +22,15 @@
             <Image
                 Grid.Row="1"
                 x:Name="ImageMicrophone"
-                Source="mic_off.svg"
+                Source="{Binding MicrophoneImageSource}"
                 HeightRequest="130"
                 SemanticProperties.Description="microphone image" />
 
             <Button
                 Grid.Row="2"
                 WidthRequest="300"
-                x:Name="ButtonRecord"
-                Text="Start recording"
-                Clicked="OnRecordClicked"
+                Text="{Binding RecordButtonText}"
+                Command="{Binding RecordCommand}"
                 HorizontalOptions="Fill"
                 VerticalOptions="End"
                 Margin="0,0,0,50" />
@@ -53,19 +52,20 @@
                 HorizontalOptions="Center" />
 
             <CollectionView
-    Grid.Row="1"
-    x:Name="AudioListView"
-    ItemsSource="{Binding RecordedFiles}">
+                Grid.Row="1"
+                ItemsSource="{Binding RecordedFiles}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="10">
                             <Label Text="{Binding Filename}" />
-                            <Button Text="Play" Clicked="OnPlayClicked" CommandParameter="{Binding FilePath}" />
+                            <Button 
+                                Text="Play" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlayCommand}" 
+                                CommandParameter="{Binding FilePath}" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </Grid>
     </ContentPage>
 </TabbedPage>

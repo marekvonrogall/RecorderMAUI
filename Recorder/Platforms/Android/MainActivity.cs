@@ -12,7 +12,7 @@ namespace Recorder
             base.OnCreate(savedInstanceState);
 
             // Set the status bar color
-            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#869c7e")); // Replace with your desired color code
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#869c7e"));
         }
     }
 }

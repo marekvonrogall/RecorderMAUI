@@ -8,9 +8,8 @@ namespace Recorder
         {
             InitializeComponent();
             IAudioManager audioManager = new AudioManager();
-
-            //MainPage = new AppShell();
-            MainPage = new Recorder(audioManager);
+            RecorderViewModel viewModel = new RecorderViewModel(audioManager);
+            MainPage = new Recorder(viewModel);
         }
     }
 }
