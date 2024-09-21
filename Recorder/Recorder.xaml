@@ -14,7 +14,7 @@
 
             <Label
                 Grid.Row="0"
-                Padding="30"
+                Padding="10"
                 Text="Audiorekorder"
                 Style="{StaticResource Headline}"
                 HorizontalOptions="Center" />
@@ -33,7 +33,7 @@
                 Command="{Binding RecordCommand}"
                 HorizontalOptions="Fill"
                 VerticalOptions="End"
-                Margin="0,0,0,50" />
+                Margin="0,0,0,20" />
         </Grid>
     </ContentPage>
 
@@ -46,7 +46,7 @@
 
             <Label
                 Grid.Row="0"
-                Padding="30"
+                Padding="10"
                 Text="Aufnahmen"
                 Style="{StaticResource Headline}"
                 HorizontalOptions="Center" />
@@ -57,9 +57,10 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Filename}" />
+                            <Label Text="{Binding Filename}" HorizontalOptions="Center"/>
                             <Button 
                                 Text="Play" 
+                                WidthRequest="300"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlayCommand}" 
                                 CommandParameter="{Binding FilePath}" />
                         </StackLayout>
