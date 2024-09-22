@@ -61,8 +61,9 @@
                             <Button 
                                 Text="Play" 
                                 WidthRequest="300"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlayCommand}" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.PlayCommand}"
                                 CommandParameter="{Binding FilePath}" />
+                            <!--Fremdhilfe: https://chatgpt.com/share/66eec5d7-3670-8009-9346-8a41fd25086a-->
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
